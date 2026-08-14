@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>The Soft Corner Trial ⚖️</title>
+
+<style>
+
+*{
+    box-sizing:border-box;
+}
+
+body{
+    margin:0;
+    font-family:Georgia, "Times New Roman", serif;
+    background:#f5efe5;
+    color:#2e2924;
+}
+
+.container{
+    width:min(92%,750px);
+    margin:auto;
+    padding:40px 0 80px;
+}
+
+
+/* COURT HEADER */
+
+.court-header{
+    text-align:center;
+    padding:40px 20px;
+    border:3px double #2e2924;
+    background:#fffaf1;
+    box-shadow:8px 8px 0 #d7cbbb;
+}
+
+.court-header .tiny{
+    letter-spacing:3px;
+    font-size:12px;
+    opacity:.6;
+}
+
+.court-header h1{
+    font-size:38px;
+    margin:15px 0 10px;
+}
+
+.court-header p{
+    margin:5px;
+}
+
+
+/* CASE STATUS */
+
+.status{
+    margin-top:25px;
+    text-align:center;
+}
+
+.badge{
+    display:inline-block;
+    background:#922c2c;
+    color:white;
+    padding:8px 15px;
+    border-radius:4px;
+    font-size:13px;
+    font-weight:bold;
+    transform:rotate(-2deg);
+}
+
+
+/* SECTION */
+
+.section{
+    background:#fffaf1;
+    margin-top:25px;
+    padding:25px;
+    border:1px solid #cfc3b3;
+    box-shadow:5px 5px 0 #ddd0bd;
+}
+
+.section h2{
+    margin-top:0;
+    border-bottom:1px solid #cfc3b3;
+    padding-bottom:12px;
+}
+
+
+/* EVIDENCE */
+
+.evidence{
+    background:#f7f0e4;
+    border-left:5px solid #674d3c;
+    padding:18px;
+    margin:16px 0;
+}
+
+.who{
+    font-size:12px;
+    font-weight:bold;
+    opacity:.55;
+    margin-bottom:7px;
+    text-transform:uppercase;
+    letter-spacing:1px;
+}
+
+.quote{
+    font-size:18px;
+    line-height:1.5;
+}
+
+.safu{
+    border-left-color:#a84c74;
+}
+
+.rimon{
+    border-left-color:#426ca8;
+}
+
+
+/* STAMP */
+
+.stamp{
+    display:inline-block;
+    color:#b12828;
+    border:4px solid #b12828;
+    font-weight:bold;
+    padding:8px 14px;
+    transform:rotate(-6deg);
+    margin:15px 0;
+    font-size:20px;
+}
+
+
+/* METER */
+
+.meter-container{
+    margin-top:20px;
+}
+
+.meter{
+    background:#ddd1c1;
+    height:25px;
+    border-radius:50px;
+    overflow:hidden;
+}
+
+.meter-fill{
+    height:100%;
+    width:0%;
+    background:#a84646;
+    transition:1.5s;
+}
+
+.meter-label{
+    margin-top:8px;
+    font-size:14px;
+}
+
+
+/* BUTTONS */
+
+button{
+    padding:13px 20px;
+    border:none;
+    font-family:inherit;
+    font-size:15px;
+    cursor:pointer;
+    margin:7px;
+    border-radius:4px;
+}
+
+.primary{
+    background:#3e342c;
+    color:white;
+}
+
+.secondary{
+    background:#ded2c1;
+    color:#2e2924;
+}
+
+
+/* VERDICT */
+
+#verdict{
+    display:none;
+    text-align:center;
+}
+
+.gavel{
+    font-size:55px;
+    animation:gavel 0.5s ease;
+}
+
+@keyframes gavel{
+
+    0%{
+        transform:rotate(-40deg);
+    }
+
+    70%{
+        transform:rotate(15deg);
+    }
+
+    100%{
+        transform:rotate(0);
+    }
+}
+
+.guilty{
+    font-size:34px;
+    color:#932d2d;
+    margin:10px 0;
+}
+
+
+/* APPEAL */
+
+#appealMessage{
+    margin-top:15px;
+    font-weight:bold;
+    min-height:25px;
+}
+
+
+/* CONFETTI */
+
+.emoji{
+    position:fixed;
+    top:-40px;
+    animation:fall 4s linear forwards;
+    pointer-events:none;
+}
+
+@keyframes fall{
+
+    to{
+        transform:translateY(110vh) rotate(360deg);
+        opacity:0;
+    }
+
+}
+
+
+/* FINAL NOTE */
+
+.final-note{
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    background:#ffe9ef;
+    border:none;
+    box-shadow:none;
+    border-radius:18px;
+    text-align:center;
+}
+
+.final-note h2{
+    border:none;
+}
+
+.small{
+    font-size:13px;
+    opacity:.6;
+}
+
+footer{
+    text-align:center;
+    margin-top:35px;
+    font-size:12px;
+    opacity:.5;
+}
+
+
+@media(max-width:500px){
+
+    .court-header h1{
+        font-size:29px;
+    }
+
+    .quote{
+        font-size:16px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+<div class="container">
+
+
+<!-- HEADER -->
+
+<div class="court-header">
+
+    <div class="tiny">
+        THE HIGH COURT OF UNNECESSARY FEELINGS
+    </div>
+
+    <h1>
+        The People vs.<br>
+        Rimon's Alleged Soft Corner
+    </h1>
+
+    <p>
+        Case No. DHONG-001
+    </p>
+
+    <p>
+        Prosecutor: Safu 😌
+    </p>
+
+    <p>
+        Defendant: One suspiciously defensive person 😭
+    </p>
+
+</div>
+
+
+<div class="status">
+
+    <div class="badge">
+        CASE CURRENTLY UNDER INVESTIGATION
+    </div>
+
+</div>
+
+
+
+<!-- CHARGE -->
+
+<div class="section">
+
+<h2>
+⚖️ The Charge
+</h2>
+
+<p>
+The defendant is accused of repeatedly claiming that certain
+statements were merely <strong>"dhong"</strong>,
+while simultaneously displaying suspicious levels of softness.
+</p>
+
+<p>
+The prosecution has submitted the following evidence.
+</p>
+
+</div>
+
+
+
+<!-- EVIDENCE 1 -->
+
+<div class="section">
+
+<h2>
+Exhibit A
+</h2>
+
+
+<div class="evidence safu">
+
+<div class="who">
+Safu
+</div>
+
+<div class="quote">
+“Am I close to you?”
+</div>
+
+</div>
+
+
+<div class="evidence rimon">
+
+<div class="who">
+Defendant
+</div>
+
+<div class="quote">
+“Close enough for me to make an exception for you 😭”
+</div>
+
+</div>
+
+
+<div class="stamp">
+SUSPICIOUS
+</div>
+
+<p>
+Court observation:
+The defendant could have simply said
+“yes” or “no”.
+Instead, he chose unnecessary emotional wording.
+</p>
+
+</div>
+
+
+
+<!-- EVIDENCE 2 -->
+
+<div class="section">
+
+<h2>
+Exhibit B
+</h2>
+
+
+<div class="evidence rimon">
+
+<div class="who">
+Defendant
+</div>
+
+<div class="quote">
+“Nahole ekjon important r close manush emnei chole jaito.”
+</div>
+
+</div>
+
+
+<div class="evidence safu">
+
+<div class="who">
+Safu
+</div>
+
+<div class="quote">
+“Dhong.”
+</div>
+
+</div>
+
+
+<div class="stamp">
+DHONG CLAIMED
+</div>
+
+<p>
+The prosecution immediately rejected
+the defendant's suspicious sweetness.
+</p>
+
+</div>
+
+
+
+<!-- EVIDENCE 3 -->
+
+<div class="section">
+
+<h2>
+Exhibit C — The Fatal Mistake
+</h2>
+
+
+<div class="evidence rimon">
+
+<div class="who">
+Defendant
+</div>
+
+<div class="quote">
+“Dhong dhorcho naki amar soft corner dhore felso? 🫠”
+</div>
+
+</div>
+
+
+<div class="evidence safu">
+
+<div class="who">
+Safu
+</div>
+
+<div class="quote">
+“Dhong.”
+</div>
+
+</div>
+
+
+<div class="evidence rimon">
+
+<div class="who">
+Defendant
+</div>
+
+<div class="quote">
+“Thik ase soft corner ta revoke kore nilam.”
+</div>
+
+</div>
+
+
+<div class="evidence safu">
+
+<div class="who">
+Safu
+</div>
+
+<div class="quote">
+“Soft corner actually?”
+</div>
+
+</div>
+
+
+<p>
+At this point, the courtroom became suspiciously quiet.
+</p>
+
+</div>
+
+
+
+<!-- DHONG METER -->
+
+<div class="section">
+
+<h2>
+📊 Scientific Dhong Analysis
+</h2>
+
+<p>
+Press the button to analyse the evidence.
+</p>
+
+<div style="text-align:center;">
+
+<button
+class="primary"
+onclick="analyse()"
+>
+Analyse Evidence
+</button>
+
+</div>
+
+
+<div class="meter-container">
+
+<div class="meter">
+
+<div
+class="meter-fill"
+id="meterFill">
+</div>
+
+</div>
+
+<div
+class="meter-label"
+id="meterText"
+>
+Dhong probability: unknown
+</div>
+
+</div>
+
+</div>
+
+
+
+<!-- VERDICT -->
+
+<div class="section">
+
+<h2>
+👨‍⚖️ Final Verdict
+</h2>
+
+<p>
+After reviewing all messages,
+the court is ready to announce its decision.
+</p>
+
+
+<div style="text-align:center;">
+
+<button
+class="primary"
+onclick="showVerdict()"
+>
+Hear The Verdict
+</button>
+
+</div>
+
+
+<div id="verdict">
+
+<div class="gavel">
+⚖️
+</div>
+
+<div class="guilty">
+GUILTY
+</div>
+
+<p>
+The defendant is hereby found guilty of:
+</p>
+
+<p>
+
+<strong>
+Having a soft corner for Safu.
+</strong>
+
+</p>
+
+<p>
+Sentence:
+Pretending it was dhong for absolutely no reason 😭
+</p>
+
+
+<div class="stamp">
+CASE CLOSED
+</div>
+
+
+<br>
+
+
+<button
+class="secondary"
+onclick="appeal()"
+>
+Appeal The Verdict
+</button>
+
+
+<div id="appealMessage">
+</div>
+
+</div>
+
+</div>
+
+
+
+<!-- FINAL -->
+
+<div class="section final-note">
+
+<h2>
+Court's Private Note 🤫
+</h2>
+
+<p>
+Okay fine.
+</p>
+
+<p>
+Maybe it wasn't completely dhong.
+</p>
+
+<p>
+Some people just quietly become important
+before you even realise it.
+</p>
+
+<p>
+And apparently...
+you're one of those people. 😌
+</p>
+
+<p class="small">
+Please don't use this statement against the defendant
+in future proceedings.
+</p>
+
+</div>
+
+
+<footer>
+
+© Department of Dhong Investigation<br>
+All emotional evidence may be denied later.
+
+</footer>
+
+
+</div>
+
+
+
+<script>
+
+
+function analyse(){
+
+    let meter =
+    document.getElementById("meterFill");
+
+    let text =
+    document.getElementById("meterText");
+
+
+    meter.style.width =
+    "17%";
+
+
+    setTimeout(function(){
+
+        text.innerHTML =
+        "Dhong probability: 17% 😭<br>Soft corner probability: extremely suspicious.";
+
+    },1200);
+
+}
+
+
+
+function showVerdict(){
+
+    document.getElementById("verdict")
+    .style.display =
+    "block";
+
+
+    for(let i=0;i<25;i++){
+
+        setTimeout(createEmoji,i*80);
+
+    }
+
+}
+
+
+
+let appealCount=0;
+
+
+function appeal(){
+
+    appealCount++;
+
+    let message =
+    document.getElementById("appealMessage");
+
+
+    if(appealCount===1){
+
+        message.innerHTML =
+        "❌ Appeal rejected.";
+
+    }
+
+    else if(appealCount===2){
+
+        message.innerHTML =
+        "❌ Still rejected, counselor 😭";
+
+    }
+
+    else if(appealCount===3){
+
+        message.innerHTML =
+        "The judge said STOP 😭";
+
+    }
+
+    else{
+
+        message.innerHTML =
+        "Case closed. Go accept your soft corner 😌";
+
+    }
+
+}
+
+
+
+function createEmoji(){
+
+    const emojis=[
+        "😭",
+        "😌",
+        "🫠",
+        "💗",
+        "⚖️"
+    ];
+
+
+    const emoji=
+    document.createElement("div");
+
+
+    emoji.className=
+    "emoji";
+
+
+    emoji.innerText=
+    emojis[
+        Math.floor(
+            Math.random()*emojis.length
+        )
+    ];
+
+
+    emoji.style.left=
+    Math.random()*95+"vw";
+
+
+    emoji.style.fontSize=
+    (18+Math.random()*25)+"px";
+
+
+    document.body.appendChild(emoji);
+
+
+    setTimeout(function(){
+
+        emoji.remove();
+
+    },4000);
+
+}
+
+
+</script>
+
+</body>
+
+</html>
