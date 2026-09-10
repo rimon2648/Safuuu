@@ -1,836 +1,598 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Get Well Soon, Safu 🤍</title>
 
-<title>The Soft Corner Trial ⚖️</title>
-
-<style>
-
-*{
-    box-sizing:border-box;
-}
-
-body{
-    margin:0;
-    font-family:Georgia, "Times New Roman", serif;
-    background:#f5efe5;
-    color:#2e2924;
-}
-
-.container{
-    width:min(92%,750px);
-    margin:auto;
-    padding:40px 0 80px;
-}
-
-
-/* COURT HEADER */
-
-.court-header{
-    text-align:center;
-    padding:40px 20px;
-    border:3px double #2e2924;
-    background:#fffaf1;
-    box-shadow:8px 8px 0 #d7cbbb;
-}
-
-.court-header .tiny{
-    letter-spacing:3px;
-    font-size:12px;
-    opacity:.6;
-}
-
-.court-header h1{
-    font-size:38px;
-    margin:15px 0 10px;
-}
-
-.court-header p{
-    margin:5px;
-}
-
-
-/* CASE STATUS */
-
-.status{
-    margin-top:25px;
-    text-align:center;
-}
-
-.badge{
-    display:inline-block;
-    background:#922c2c;
-    color:white;
-    padding:8px 15px;
-    border-radius:4px;
-    font-size:13px;
-    font-weight:bold;
-    transform:rotate(-2deg);
-}
-
-
-/* SECTION */
-
-.section{
-    background:#fffaf1;
-    margin-top:25px;
-    padding:25px;
-    border:1px solid #cfc3b3;
-    box-shadow:5px 5px 0 #ddd0bd;
-}
-
-.section h2{
-    margin-top:0;
-    border-bottom:1px solid #cfc3b3;
-    padding-bottom:12px;
-}
-
-
-/* EVIDENCE */
-
-.evidence{
-    background:#f7f0e4;
-    border-left:5px solid #674d3c;
-    padding:18px;
-    margin:16px 0;
-}
-
-.who{
-    font-size:12px;
-    font-weight:bold;
-    opacity:.55;
-    margin-bottom:7px;
-    text-transform:uppercase;
-    letter-spacing:1px;
-}
-
-.quote{
-    font-size:18px;
-    line-height:1.5;
-}
-
-.safu{
-    border-left-color:#a84c74;
-}
-
-.rimon{
-    border-left-color:#426ca8;
-}
-
-
-/* STAMP */
-
-.stamp{
-    display:inline-block;
-    color:#b12828;
-    border:4px solid #b12828;
-    font-weight:bold;
-    padding:8px 14px;
-    transform:rotate(-6deg);
-    margin:15px 0;
-    font-size:20px;
-}
-
-
-/* METER */
-
-.meter-container{
-    margin-top:20px;
-}
-
-.meter{
-    background:#ddd1c1;
-    height:25px;
-    border-radius:50px;
-    overflow:hidden;
-}
-
-.meter-fill{
-    height:100%;
-    width:0%;
-    background:#a84646;
-    transition:1.5s;
-}
-
-.meter-label{
-    margin-top:8px;
-    font-size:14px;
-}
-
-
-/* BUTTONS */
-
-button{
-    padding:13px 20px;
-    border:none;
-    font-family:inherit;
-    font-size:15px;
-    cursor:pointer;
-    margin:7px;
-    border-radius:4px;
-}
-
-.primary{
-    background:#3e342c;
-    color:white;
-}
-
-.secondary{
-    background:#ded2c1;
-    color:#2e2924;
-}
-
-
-/* VERDICT */
-
-#verdict{
-    display:none;
-    text-align:center;
-}
-
-.gavel{
-    font-size:55px;
-    animation:gavel 0.5s ease;
-}
-
-@keyframes gavel{
-
-    0%{
-        transform:rotate(-40deg);
+  <style>
+    * {
+      box-sizing: border-box;
     }
 
-    70%{
-        transform:rotate(15deg);
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at top, #fff4f7 0%, #f7efff 40%, #eef7ff 100%);
+      color: #3b3440;
+      overflow-x: hidden;
     }
 
-    100%{
-        transform:rotate(0);
-    }
-}
-
-.guilty{
-    font-size:34px;
-    color:#932d2d;
-    margin:10px 0;
-}
-
-
-/* APPEAL */
-
-#appealMessage{
-    margin-top:15px;
-    font-weight:bold;
-    min-height:25px;
-}
-
-
-/* CONFETTI */
-
-.emoji{
-    position:fixed;
-    top:-40px;
-    animation:fall 4s linear forwards;
-    pointer-events:none;
-}
-
-@keyframes fall{
-
-    to{
-        transform:translateY(110vh) rotate(360deg);
-        opacity:0;
+    .container {
+      width: min(92%, 720px);
+      margin: auto;
+      padding: 35px 0 70px;
     }
 
-}
-
-
-/* FINAL NOTE */
-
-.final-note{
-    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
-    background:#ffe9ef;
-    border:none;
-    box-shadow:none;
-    border-radius:18px;
-    text-align:center;
-}
-
-.final-note h2{
-    border:none;
-}
-
-.small{
-    font-size:13px;
-    opacity:.6;
-}
-
-footer{
-    text-align:center;
-    margin-top:35px;
-    font-size:12px;
-    opacity:.5;
-}
-
-
-@media(max-width:500px){
-
-    .court-header h1{
-        font-size:29px;
+    .hero {
+      text-align: center;
+      padding: 35px 20px;
     }
 
-    .quote{
-        font-size:16px;
+    .emoji-big {
+      font-size: 70px;
+      animation: float 2.5s ease-in-out infinite;
     }
 
-}
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0);
+      }
 
-</style>
+      50% {
+        transform: translateY(-8px);
+      }
+    }
 
+    h1 {
+      font-size: clamp(34px, 8vw, 54px);
+      margin: 12px 0 10px;
+      line-height: 1.05;
+    }
+
+    .subtitle {
+      opacity: 0.7;
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.72);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(255,255,255,0.8);
+      border-radius: 28px;
+      padding: 24px;
+      margin-bottom: 18px;
+      box-shadow: 0 14px 40px rgba(74, 56, 91, 0.10);
+    }
+
+    .card h2 {
+      margin-top: 0;
+      font-size: 23px;
+    }
+
+    .card p {
+      line-height: 1.7;
+      margin-bottom: 0;
+    }
+
+    .medicine-box {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .item {
+      background: #ffffffb8;
+      border-radius: 20px;
+      padding: 17px 12px;
+      text-align: center;
+      font-size: 15px;
+    }
+
+    .item span {
+      display: block;
+      font-size: 30px;
+      margin-bottom: 7px;
+    }
+
+    .center {
+      text-align: center;
+    }
+
+    button {
+      border: none;
+      padding: 14px 20px;
+      border-radius: 999px;
+      font-size: 16px;
+      font-weight: 700;
+      cursor: pointer;
+      margin: 6px;
+      transition: 0.2s;
+    }
+
+    button:active {
+      transform: scale(0.96);
+    }
+
+    .primary {
+      background: #f49ab8;
+      color: #411f2b;
+    }
+
+    .secondary {
+      background: #e7dcf8;
+      color: #3d3151;
+    }
+
+    #prescription {
+      display: none;
+      margin-top: 20px;
+      background: #fff;
+      padding: 20px;
+      border-radius: 20px;
+      line-height: 1.8;
+      animation: appear 0.5s ease;
+    }
+
+    @keyframes appear {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .progress-wrap {
+      margin-top: 20px;
+    }
+
+    .progress {
+      height: 18px;
+      background: #eee6f2;
+      border-radius: 999px;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      width: 12%;
+      background: linear-gradient(90deg, #f29ab7, #b9a0ea);
+      transition: width 1.2s ease;
+    }
+
+    #progressText {
+      margin-top: 10px;
+      font-size: 14px;
+      opacity: 0.7;
+    }
+
+    .message-box {
+      background: #fff7fb;
+      border-radius: 22px;
+      padding: 20px;
+      line-height: 1.75;
+      margin-top: 14px;
+    }
+
+    .tiny {
+      font-size: 13px;
+      opacity: 0.58;
+      margin-top: 12px;
+    }
+
+    .heart {
+      position: fixed;
+      bottom: -40px;
+      pointer-events: none;
+      animation: rise 4s linear forwards;
+    }
+
+    @keyframes rise {
+      to {
+        transform: translateY(-110vh) rotate(25deg);
+        opacity: 0;
+      }
+    }
+
+    footer {
+      text-align: center;
+      opacity: 0.5;
+      font-size: 13px;
+      margin-top: 28px;
+    }
+
+    @media(max-width: 500px) {
+      .medicine-box {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+  </style>
 </head>
-
 
 <body>
 
-<div class="container">
+  <div class="container">
+
+    <section class="hero">
+
+      <div class="emoji-big">🤒🩷</div>
+
+      <h1>
+        Safu's Tiny Recovery Room
+      </h1>
+
+      <p class="subtitle">
+        Today's only responsibility:
+        survive the sickness, drink water,
+        and stop pretending you're completely fine 😭
+      </p>
+
+    </section>
 
 
-<!-- HEADER -->
+    <div class="card">
 
-<div class="court-header">
+      <h2>
+        🩺 Official Diagnosis
+      </h2>
 
-    <div class="tiny">
-        THE HIGH COURT OF UNNECESSARY FEELINGS
+      <p>
+        Patient: <strong>Safu</strong>
+        <br><br>
+
+        Current condition:
+        unfairly sick and therefore temporarily excused
+        from doing anything exhausting.
+        <br><br>
+
+        Recommended treatment:
+        rest, water, proper food,
+        sleep and absolutely zero unnecessary stress.
+      </p>
+
     </div>
 
-    <h1>
-        The People vs.<br>
-        Rimon's Alleged Soft Corner
-    </h1>
 
-    <p>
-        Case No. DHONG-001
-    </p>
+    <div class="card">
 
-    <p>
-        Prosecutor: Safu 😌
-    </p>
+      <h2>
+        Recovery Starter Pack 🌷
+      </h2>
 
-    <p>
-        Defendant: One suspiciously defensive person 😭
-    </p>
+      <div class="medicine-box">
 
-</div>
+        <div class="item">
+          <span>💧</span>
+          Drink water
+        </div>
 
+        <div class="item">
+          <span>😴</span>
+          Proper sleep
+        </div>
 
-<div class="status">
+        <div class="item">
+          <span>🍲</span>
+          Eat something
+        </div>
 
-    <div class="badge">
-        CASE CURRENTLY UNDER INVESTIGATION
+        <div class="item">
+          <span>📱</span>
+          Text someone if bored
+        </div>
+
+      </div>
+
     </div>
 
-</div>
 
+    <div class="card center">
 
+      <h2>
+        Your Prescription 📋
+      </h2>
 
-<!-- CHARGE -->
+      <p>
+        Tap below to receive a highly scientific treatment plan.
+      </p>
 
-<div class="section">
+      <button class="primary" onclick="showPrescription()">
+        Open Prescription
+      </button>
 
-<h2>
-⚖️ The Charge
-</h2>
+      <div id="prescription">
 
-<p>
-The defendant is accused of repeatedly claiming that certain
-statements were merely <strong>"dhong"</strong>,
-while simultaneously displaying suspicious levels of softness.
-</p>
+        <strong>Prescription for Safu:</strong>
 
-<p>
-The prosecution has submitted the following evidence.
-</p>
+        <br><br>
 
-</div>
+        8 hours of sleep 😴
+        <br>
 
+        Lots of water 💧
+        <br>
 
+        Something warm to eat 🍲
+        <br>
 
-<!-- EVIDENCE 1 -->
+        One comfortable blanket 🛌
+        <br>
 
-<div class="section">
+        Zero overthinking 🚫
+        <br>
 
-<h2>
-Exhibit A
-</h2>
+        And occasional annoying messages from Rimon 😭
 
+        <br><br>
 
-<div class="evidence safu">
+        <strong>
+          Repeat until recovered.
+        </strong>
 
-<div class="who">
-Safu
-</div>
+      </div>
 
-<div class="quote">
-“Am I close to you?”
-</div>
+    </div>
 
-</div>
 
+    <div class="card center">
 
-<div class="evidence rimon">
+      <h2>
+        Recovery Status 📈
+      </h2>
 
-<div class="who">
-Defendant
-</div>
+      <p>
+        Completely legitimate medical technology.
+      </p>
 
-<div class="quote">
-“Close enough for me to make an exception for you 😭”
-</div>
+      <div class="progress-wrap">
 
-</div>
+        <div class="progress">
 
+          <div
+            class="progress-fill"
+            id="progressFill">
+          </div>
 
-<div class="stamp">
-SUSPICIOUS
-</div>
+        </div>
 
-<p>
-Court observation:
-The defendant could have simply said
-“yes” or “no”.
-Instead, he chose unnecessary emotional wording.
-</p>
+        <div id="progressText">
+          Recovery loading... 12%
+        </div>
 
-</div>
+      </div>
 
+      <br>
 
+      <button class="secondary" onclick="increaseRecovery()">
+        Add +10% Recovery 😭
+      </button>
 
-<!-- EVIDENCE 2 -->
+    </div>
 
-<div class="section">
 
-<h2>
-Exhibit B
-</h2>
+    <div class="card">
 
+      <h2>
+        One Serious Minute 🤍
+      </h2>
 
-<div class="evidence rimon">
+      <div class="message-box">
 
-<div class="who">
-Defendant
-</div>
+        I know this is just a silly little webpage,
+        but seriously, take care of yourself.
 
-<div class="quote">
-“Nahole ekjon important r close manush emnei chole jaito.”
-</div>
+        <br><br>
 
-</div>
+        You don't have to reply quickly,
+        entertain anyone,
+        or pretend you're feeling okay.
 
+        <br><br>
 
-<div class="evidence safu">
+        Just rest.
 
-<div class="who">
-Safu
-</div>
+        <br><br>
 
-<div class="quote">
-“Dhong.”
-</div>
+        And if you're bored, feeling low,
+        need to complain about being sick,
+        or just want someone to talk nonsense with,
+        you know where to find me.
 
-</div>
+        <br><br>
 
+        <strong>
+          Get well soon, Safu.
+          I want to see you feeling like yourself again. 🤍
+        </strong>
 
-<div class="stamp">
-DHONG CLAIMED
-</div>
+      </div>
 
-<p>
-The prosecution immediately rejected
-the defendant's suspicious sweetness.
-</p>
+    </div>
 
-</div>
 
+    <div class="card center">
 
+      <h2>
+        Emergency Happiness Button 🚨
+      </h2>
 
-<!-- EVIDENCE 3 -->
+      <p>
+        For use during extreme boredom,
+        sickness or unnecessary sadness.
+      </p>
 
-<div class="section">
+      <button class="primary" onclick="happinessEmergency()">
+        Press In Emergency
+      </button>
 
-<h2>
-Exhibit C — The Fatal Mistake
-</h2>
+      <p id="emergencyMessage"></p>
 
+    </div>
 
-<div class="evidence rimon">
 
-<div class="who">
-Defendant
-</div>
+    <div class="card center">
 
-<div class="quote">
-“Dhong dhorcho naki amar soft corner dhore felso? 🫠”
-</div>
+      <h2>
+        Doctor's Final Orders 🧸
+      </h2>
 
-</div>
+      <p>
+        No arguments.
+        No "ami thik asi."
+        No staying awake unnecessarily.
+      </p>
 
+      <br>
 
-<div class="evidence safu">
+      <strong>
+        Rest first.
+        Everything else can wait.
+      </strong>
 
-<div class="who">
-Safu
-</div>
+      <p class="tiny">
+        This prescription was definitely not approved
+        by an actual medical professional 😭
+      </p>
 
-<div class="quote">
-“Dhong.”
-</div>
+    </div>
 
-</div>
 
+    <footer>
+      Made specially for one sick Safu 🤒
+      <br>
+      Recovery Department — Rimon Edition
+    </footer>
 
-<div class="evidence rimon">
+  </div>
 
-<div class="who">
-Defendant
-</div>
 
-<div class="quote">
-“Thik ase soft corner ta revoke kore nilam.”
-</div>
+  <script>
 
-</div>
+    let recovery = 12;
 
+    function showPrescription() {
 
-<div class="evidence safu">
+      document.getElementById("prescription")
+      .style.display = "block";
 
-<div class="who">
-Safu
-</div>
-
-<div class="quote">
-“Soft corner actually?”
-</div>
-
-</div>
-
-
-<p>
-At this point, the courtroom became suspiciously quiet.
-</p>
-
-</div>
-
-
-
-<!-- DHONG METER -->
-
-<div class="section">
-
-<h2>
-📊 Scientific Dhong Analysis
-</h2>
-
-<p>
-Press the button to analyse the evidence.
-</p>
-
-<div style="text-align:center;">
-
-<button
-class="primary"
-onclick="analyse()"
->
-Analyse Evidence
-</button>
-
-</div>
-
-
-<div class="meter-container">
-
-<div class="meter">
-
-<div
-class="meter-fill"
-id="meterFill">
-</div>
-
-</div>
-
-<div
-class="meter-label"
-id="meterText"
->
-Dhong probability: unknown
-</div>
-
-</div>
-
-</div>
-
-
-
-<!-- VERDICT -->
-
-<div class="section">
-
-<h2>
-👨‍⚖️ Final Verdict
-</h2>
-
-<p>
-After reviewing all messages,
-the court is ready to announce its decision.
-</p>
-
-
-<div style="text-align:center;">
-
-<button
-class="primary"
-onclick="showVerdict()"
->
-Hear The Verdict
-</button>
-
-</div>
-
-
-<div id="verdict">
-
-<div class="gavel">
-⚖️
-</div>
-
-<div class="guilty">
-GUILTY
-</div>
-
-<p>
-The defendant is hereby found guilty of:
-</p>
-
-<p>
-
-<strong>
-Having a soft corner for Safu.
-</strong>
-
-</p>
-
-<p>
-Sentence:
-Pretending it was dhong for absolutely no reason 😭
-</p>
-
-
-<div class="stamp">
-CASE CLOSED
-</div>
-
-
-<br>
-
-
-<button
-class="secondary"
-onclick="appeal()"
->
-Appeal The Verdict
-</button>
-
-
-<div id="appealMessage">
-</div>
-
-</div>
-
-</div>
-
-
-
-<!-- FINAL -->
-
-<div class="section final-note">
-
-<h2>
-Court's Private Note 🤫
-</h2>
-
-<p>
-Okay fine.
-</p>
-
-<p>
-Maybe it wasn't completely dhong.
-</p>
-
-<p>
-Some people just quietly become important
-before you even realise it.
-</p>
-
-<p>
-And apparently...
-you're one of those people. 😌
-</p>
-
-<p class="small">
-Please don't use this statement against the defendant
-in future proceedings.
-</p>
-
-</div>
-
-
-<footer>
-
-© Department of Dhong Investigation<br>
-All emotional evidence may be denied later.
-
-</footer>
-
-
-</div>
-
-
-
-<script>
-
-
-function analyse(){
-
-    let meter =
-    document.getElementById("meterFill");
-
-    let text =
-    document.getElementById("meterText");
-
-
-    meter.style.width =
-    "17%";
-
-
-    setTimeout(function(){
-
-        text.innerHTML =
-        "Dhong probability: 17% 😭<br>Soft corner probability: extremely suspicious.";
-
-    },1200);
-
-}
-
-
-
-function showVerdict(){
-
-    document.getElementById("verdict")
-    .style.display =
-    "block";
-
-
-    for(let i=0;i<25;i++){
-
-        setTimeout(createEmoji,i*80);
+      createHearts();
 
     }
 
-}
 
+    function increaseRecovery() {
 
+      recovery += 10;
 
-let appealCount=0;
+      if(recovery >= 100) {
 
+        recovery = 100;
 
-function appeal(){
+        document.getElementById("progressText")
+        .innerText =
+        "100% — Safu has officially defeated the sickness 😌🎉";
 
-    appealCount++;
+      }
 
-    let message =
-    document.getElementById("appealMessage");
+      else {
 
+        document.getElementById("progressText")
+        .innerText =
+        "Recovery loading... " + recovery + "%";
 
-    if(appealCount===1){
+      }
 
-        message.innerHTML =
-        "❌ Appeal rejected.";
-
-    }
-
-    else if(appealCount===2){
-
-        message.innerHTML =
-        "❌ Still rejected, counselor 😭";
-
-    }
-
-    else if(appealCount===3){
-
-        message.innerHTML =
-        "The judge said STOP 😭";
+      document.getElementById("progressFill")
+      .style.width =
+      recovery + "%";
 
     }
 
-    else{
 
-        message.innerHTML =
-        "Case closed. Go accept your soft corner 😌";
+    let emergencyCount = 0;
+
+    function happinessEmergency() {
+
+      emergencyCount++;
+
+      const message =
+      document.getElementById("emergencyMessage");
+
+      const messages = [
+
+        "Emergency hug successfully delivered 🫂",
+
+        "One imaginary bowl of soup has been dispatched 🍲",
+
+        "You are legally required to rest now 😭",
+
+        "Your sickness has received an official warning ⚠️",
+
+        "Rimon has been notified. Unnecessary nonsense incoming shortly 😌",
+
+        "Stop pressing this and drink some water 😭💧"
+
+      ];
+
+      message.innerText =
+      messages[
+        (emergencyCount - 1) % messages.length
+      ];
+
+      createHearts();
 
     }
 
-}
 
+    function createHearts() {
 
+      const emojis =
+      ["🤍", "🩷", "🌷", "🫂", "✨", "🧸"];
 
-function createEmoji(){
+      for(let i = 0; i < 15; i++) {
 
-    const emojis=[
-        "😭",
-        "😌",
-        "🫠",
-        "💗",
-        "⚖️"
-    ];
+        setTimeout(function() {
 
+          const heart =
+          document.createElement("div");
 
-    const emoji=
-    document.createElement("div");
+          heart.className =
+          "heart";
 
+          heart.innerText =
+          emojis[
+            Math.floor(
+              Math.random() * emojis.length
+            )
+          ];
 
-    emoji.className=
-    "emoji";
+          heart.style.left =
+          Math.random() * 95 + "vw";
 
+          heart.style.fontSize =
+          (18 + Math.random() * 20) + "px";
 
-    emoji.innerText=
-    emojis[
-        Math.floor(
-            Math.random()*emojis.length
-        )
-    ];
+          document.body.appendChild(heart);
 
+          setTimeout(function() {
+            heart.remove();
+          }, 4000);
 
-    emoji.style.left=
-    Math.random()*95+"vw";
+        }, i * 100);
 
+      }
 
-    emoji.style.fontSize=
-    (18+Math.random()*25)+"px";
+    }
 
-
-    document.body.appendChild(emoji);
-
-
-    setTimeout(function(){
-
-        emoji.remove();
-
-    },4000);
-
-}
-
-
-</script>
+  </script>
 
 </body>
-
 </html>
